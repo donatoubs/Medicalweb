@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | Novahealth</title>
+  <link rel="stylesheet" href="../static/css/login.css"> <!-- Ajusta la ruta según tu estructura -->
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <h2 class="logo1">Novahealth</h2>
+
+    <!-- Formulario de Login -->
+    <form id="login-form" class="form1" method="POST">
+      {{ login_form.hidden_tag() }}
+      <label for="correo" class="custom-label">Identificación</label>
+      {{ login_form.correo(class="custom-input", placeholder="Ingresa tu correo") }}<br>
+      <label for="clave" class="custom-label">Contraseña</label>
+      {{ login_form.clave(class="custom-input", placeholder="Ingresa tu contraseña") }}<br>
+      <a href="#" class="forgot-password">Olvidé la contraseña</a>
+      {{ login_form.submit_login(class="custom-button") }}
+      <p class="register-link">¿Aún no tengo una cuenta? <a href="#" id="show-register">Registrarme</a></p>
+    </form>
+
+    <!-- Formulario de Registro (oculto inicialmente) -->
+    <form id="register-form" class="form1" method="POST" style="display: none;">
+      {{ registro_form.hidden_tag() }}
+      <label for="nombre" class="custom-label">Apellidos y Nombres</label>
+      {{ registro_form.nombre(class="custom-input", placeholder="Ingresa tus Apellidos y Nombres") }}<br>
+      <label for="correo" class="custom-label">E-mail</label>
+      {{ registro_form.correo(class="custom-input", placeholder="Ingresa tu email") }}<br>
+      <label for="dni" class="custom-label">Número de Identificación</label>
+      {{ registro_form.dni(class="custom-input", placeholder="Ingresa tu identificación") }}<br>
+      <label for="clave" class="custom-label">Contraseña</label>
+      {{ registro_form.clave(class="custom-input", placeholder="Crea una contraseña") }}<br>
+      <label for="confirmar_clave" class="custom-label">Confirmar Contraseña</label>
+      {{ registro_form.confirmar_clave(class="custom-input", placeholder="Confirma tu contraseña") }}<br>
+      {{ registro_form.submit_register(class="custom-button", id="mm") }}
+      <p class="register-link">¿Ya tienes una cuenta? <a href="#" id="show-login">Iniciar Sesión</a></p>
+    </form>
+
+    <!-- Mensajes Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash-message" style="color: red;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Vinculación del archivo JavaScript -->
+  <script src="../static/js/login.js"></script> <!-- Ajusta la ruta según tu estructura -->
+</body>
+</html>

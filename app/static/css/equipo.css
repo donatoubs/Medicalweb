@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li a {
+    padding: 20px;
+    color: #18656c;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    color: #359fa1;
+}
+
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar .dropdown-menu li a {
+    padding: 10px 20px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #2c7a7b;
+}
+
+/* Logo */
+.logo {
+    color: #335466;
+    font-size: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* SECCIÓN MÉDICOS */
+.medicos-group {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.medicos-group h2 {
+    font-size: 48px;
+    color: #335466;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    text-transform: uppercase;
+}
+
+.medicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.medico {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.medico:hover {
+    transform: translateY(-10px);
+}
+
+.medico img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.medico .info {
+    padding: 20px;
+}
+
+.medico h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.medico .specialty {
+    font-size: 16px;
+    color: #1eb0b0;
+    margin-bottom: 20px;
+}
+
+.medico .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.medico .action-btn {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    color: #2c7a7b;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.medico .action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.medico .teleconsulta {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Estilo del pie de página */
+footer {
+    background-color: #2c7a7b;
+    padding: 40px 0;
+    color: #F9FAFC;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #F9FAFC;
+    font-size: 14px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #E1E2E6;
+    text-decoration: underline;
+}
+
+/* Oculta el checkbox */
+.menu-checkbox {
+    display: none;
+}
+
+/* Icono hamburguesa */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: #18656c;
+    cursor: pointer;
+    padding: 20px;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        padding: 15px 20px;
+        font-size: 16px;
+        border-top: 1px solid #eee;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* Mostrar el menú si el checkbox está marcado */
+    .menu-checkbox:checked ~ .navbar {
+        display: flex;
+    }
+
+    /* Dropdown para móviles */
+    .navbar .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .navbar .dropdown:focus-within .dropdown-menu,
+    .navbar .dropdown:active .dropdown-menu {
+        display: block;
+        position: static;
+        box-shadow: none;
+        background-color: #f9f9f9;
+    }
+}

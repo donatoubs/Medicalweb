@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5; /* Fondo gris claro */
+}
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li a {
+    padding: 20px;
+    color: #18656c;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    color: #359fa1;
+}
+
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar .dropdown-menu li a {
+    padding: 10px 20px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #2c7a7b;
+}
+
+/* Logo */
+.logo {
+    color: #335466;
+    font-size: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Contenedor que agrupa los formularios */
+.contacto-container {
+    border: 2px solid ;
+    margin: 150px 10px 10px 10px;  /* Aumentamos el margen superior para separar del header */
+    padding: 20px;
+    border-radius: 10px;
+               /* Usamos Flexbox para alinearlos horizontalmente */
+    gap: 20px;                   /* Espacio entre los dos elementos */
+    flex-wrap: wrap;             /* Permite que los elementos se ajusten si la pantalla es pequeña */
+}
+.contacto1 h3, h2{
+    color: #359fa1;
+}
+/* Estilo para los formularios */
+.formulario {
+    border-style: solid;        /* Tipo de borde: sólido */
+    margin-top: 40px;
+    padding: 20px;              /* Relleno interno */
+    flex: 1;                    /* Ambos formularios ocupan el mismo espacio */
+    min-width: 250px;           /* Ancho mínimo para evitar que se colapsen demasiado */
+}
+
+/* Contenedor que agrupa las opciones extra */
+.opciones-extra-container {
+    margin-top: 40px;            /* Espacio superior para separar del contenido anterior */
+    text-align: center;          /* Centrar el texto del título */
+}
+
+/* Título principal que precede las opciones */
+.opciones-extra-container h2 {
+    font-size: 24px;             /* Tamaño del título */
+    color: #2c7a7b;              /* Color del título */
+    margin-bottom: 20px;         /* Espacio inferior para separar del contenido de las opciones */
+}
+
+/* Contenedor de las opciones extra */
+.opciones-extra-wrapper {
+    display: flex;               /* Usamos Flexbox para alinearlas en una fila */
+    justify-content: center;     /* Centra las opciones horizontalmente */
+    gap: 30px;                   /* Espacio entre las opciones */
+    flex-wrap: wrap;             /* Permite que se ajusten si la pantalla es pequeña */
+}
+
+/* Estilo para cada opción extra */
+.opciones-extra {
+    border: 2px solid #2c7a7b;    /* Borde */
+    padding: 20px;                /* Espaciado interno */
+    border-radius: 10px;          /* Bordes redondeados */
+    width: 250px;                 /* Ancho fijo para cada opción extra */
+    text-align: center;           /* Alinea el texto al centro */
+    background-color: #f0f0f0;    /* Fondo suave para las opciones */
+}
+
+
+

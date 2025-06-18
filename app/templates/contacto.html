@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Novahealth</title>
+    <link rel="stylesheet" href="../static/css/contacto.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Novahealth</a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/equipo">Nuestros Médicos</a></li>
+                <li class="dropdown">
+                    <a href="/servicios" class="dpservicios-toggle">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="emergencias.html">Emergencias</a></li>
+                        <li><a href="farmacia.html">Farmacia</a></li>
+                        <li><a href="banco_sangre.html">Banco de sangre</a></li>
+                        <li><a href="novalaser.html">Novalaser</a></li>
+                        <li><a href="convenios.html">Convenios</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contacto">Contacto</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="/citas">Agenda tu cita</a></li>
+                <li class="dropdown">
+                    <a href="#">Hola, {{ current_user.nombre }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+
+    </header>
+    <section class="contacto-container">
+        <form action="" method="post" class="formulario">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombres Completos" required>
+            <input type="tel" id="celular" name="celular" placeholder="Celular" required> <input type="email"
+                placeholder="Email">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <textarea id="mensaje" name="mensaje" placeholder="Describe tu requerimiento" rows="5" required></textarea>
+            <button type="submit" id="enviar">Enviar</button>
+        </form>
+        <div class="contacto1">
+            <h3>Te contactaremos a la brevedad posible.</h3>
+            <h2>Será un placer atender tu requerimiento</h2>
+            <p>Estamos aquí para responder tus inquietudes y atender cualquier necesidad.</p>
+        </div>
+    </section>
+    <div class="opciones-extra-container">
+            <h2>Te dejamos otras opciones de contacto</h2>
+            <div class="opciones-extra">
+                <h3>Comunicate al:</h3>
+                <p>0999999999</p>
+            </div>
+            <div class="opciones-extra">
+                <h3>Dirección Matriz Quito:</h3>
+                <p>Calle Abdón Calderón Muñoz 120 y Avenida de los Shyris</p>
+            </div>
+            <div class="opciones-extra">
+                <h3>Escríbenos al:</h3>
+                <p>contactenos@novahealth.com</p>
+            </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content container">
+            <p>©2025. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="contacto.html">Contacto</a>
+                <a href="terminos.html">Términos de Servicio</a>
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://x.com/" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
