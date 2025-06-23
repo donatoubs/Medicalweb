@@ -22,22 +22,25 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0 20px;
 }
 
-.navbar {
-    display: flex;
+/* Logo */
+.logo {
+    color: #335466;
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .navbar ul {
     display: flex;
+    align-items: center;
 }
 
 .navbar ul li a {
-    padding: 20px;
+    padding: 15px 20px;
     color: #18656c;
     font-weight: 600;
     font-size: 18px;
@@ -48,6 +51,7 @@ body {
     color: #359fa1;
 }
 
+/*Dropdown menu*/
 .navbar .dropdown {
     position: relative;
 }
@@ -58,7 +62,6 @@ body {
     top: 100%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     min-width: 200px;
 }
@@ -67,79 +70,190 @@ body {
     display: block;
 }
 
-.navbar .dropdown-menu li a {
-    padding: 10px 20px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 .navbar .dropdown-menu li a:hover {
     background-color: #f1f1f1;
     color: #2c7a7b;
 }
 
-/* Logo */
-.logo {
+/* --- ESTILOS PARA LA PÁGINA DE CONTACTO --- */
+
+/* Contenedor principal que centra todo */
+.contact-page-wrapper {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Fondo gris claro */
+}
+
+/* Encabezado de la página de contacto */
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-header h1 {
+    font-size: 2.8rem;
     color: #335466;
-    font-size: 25px;
-    font-weight: 800;
-    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-/* Contenedor que agrupa los formularios */
-.contacto-container {
-    border: 2px solid ;
-    margin: 150px 10px 10px 10px;  /* Aumentamos el margen superior para separar del header */
-    padding: 20px;
+.contact-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grilla principal de dos columnas */
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 50px; /* Espacio entre las columnas */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-container {
+    background-color: #ffffff;
     border-radius: 10px;
-               /* Usamos Flexbox para alinearlos horizontalmente */
-    gap: 20px;                   /* Espacio entre los dos elementos */
-    flex-wrap: wrap;             /* Permite que los elementos se ajusten si la pantalla es pequeña */
-}
-.contacto1 h3, h2{
-    color: #359fa1;
-}
-/* Estilo para los formularios */
-.formulario {
-    border-style: solid;        /* Tipo de borde: sólido */
-    margin-top: 40px;
-    padding: 20px;              /* Relleno interno */
-    flex: 1;                    /* Ambos formularios ocupan el mismo espacio */
-    min-width: 250px;           /* Ancho mínimo para evitar que se colapsen demasiado */
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenedor que agrupa las opciones extra */
-.opciones-extra-container {
-    margin-top: 40px;            /* Espacio superior para separar del contenido anterior */
-    text-align: center;          /* Centrar el texto del título */
+.contact-form-container .form-group {
+    margin-bottom: 15px;
 }
 
-/* Título principal que precede las opciones */
-.opciones-extra-container h2 {
-    font-size: 24px;             /* Tamaño del título */
-    color: #2c7a7b;              /* Color del título */
-    margin-bottom: 20px;         /* Espacio inferior para separar del contenido de las opciones */
+.contact-form-container label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 5px;
 }
 
-/* Contenedor de las opciones extra */
-.opciones-extra-wrapper {
-    display: flex;               /* Usamos Flexbox para alinearlas en una fila */
-    justify-content: center;     /* Centra las opciones horizontalmente */
-    gap: 30px;                   /* Espacio entre las opciones */
-    flex-wrap: wrap;             /* Permite que se ajusten si la pantalla es pequeña */
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    outline: none;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    color: #495057;
 }
 
-/* Estilo para cada opción extra */
-.opciones-extra {
-    border: 2px solid #2c7a7b;    /* Borde */
-    padding: 20px;                /* Espaciado interno */
-    border-radius: 10px;          /* Bordes redondeados */
-    width: 250px;                 /* Ancho fijo para cada opción extra */
-    text-align: center;           /* Alinea el texto al centro */
-    background-color: #f0f0f0;    /* Fondo suave para las opciones */
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+    border-color: #2c7a7b;
+    box-shadow: 0 0 5px rgba(44, 122, 123, 0.3);
+}
+
+.contact-form-container .btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c7a7b;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.contact-form-container .btn-submit:hover {
+    background-color: #18656c;
+}
+
+.contact-form-container .input-group textarea {
+    resize: none;
+    height: 120px;
+}
+
+.contact-form-container .form-group input::placeholder,
+.contact-form-container .form-group textarea::placeholder {
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 
 
+/* Columna Derecha: Información */
+.contact-info-container {
+    padding-left: 20px;
+}
 
+.contact-info-text h3 {
+    font-size: 1.1rem;
+    color: #426a80; /* Color de acento azul */
+    font-weight: 600;
+}
+
+.contact-info-text h2 {
+    font-size: 2rem;
+    color: #335466; /* Azul oscuro principal */
+    margin-bottom: 15px;
+}
+
+.contact-info-text p {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.contact-details .detail-item {
+    margin-bottom: 20px;
+}
+
+.contact-details h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.map-container {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que el iframe respete los bordes redondeados */
+}
+
+/* Estilo del pie de página */
+footer {
+    background-color: #2c7a7b;
+    padding: 40px 0;
+    color: #F9FAFC;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #F9FAFC;
+    font-size: 14px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #E1E2E6;
+    text-decoration: underline;
+}
+/* --- Responsive para pantallas pequeñas --- */
+@media (max-width: 992px) {
+    .contact-content-grid {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+    }
+    .contact-info-container {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+}

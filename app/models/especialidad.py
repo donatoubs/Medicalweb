@@ -1,11 +1,9 @@
-from app import db
+# Importa 'db' desde el archivo local db.py
+from .db import db
 
 class Especialidad(db.Model):
     __tablename__ = 'especialidades'
-    __table_args__ = {'extend_existing': True}
-
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(100), nullable=False)
+    nombre = db.Column(db.String(100), unique=True, nullable=False)
 
-    def __repr__(self):
-        return f'<Especialidad {self.nombre}>'
+    # La relación se define en el modelo Cita, aquí no es necesaria.

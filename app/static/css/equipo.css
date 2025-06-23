@@ -18,22 +18,25 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0 20px;
 }
 
-.navbar {
-    display: flex;
+/* Logo */
+.logo {
+    color: #335466;
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .navbar ul {
     display: flex;
+    align-items: center;
 }
 
 .navbar ul li a {
-    padding: 20px;
+    padding: 15px 20px;
     color: #18656c;
     font-weight: 600;
     font-size: 18px;
@@ -44,6 +47,7 @@
     color: #359fa1;
 }
 
+/*Dropdown menu*/
 .navbar .dropdown {
     position: relative;
 }
@@ -54,7 +58,6 @@
     top: 100%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     min-width: 200px;
 }
@@ -63,107 +66,153 @@
     display: block;
 }
 
-.navbar .dropdown-menu li a {
-    padding: 10px 20px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 .navbar .dropdown-menu li a:hover {
     background-color: #f1f1f1;
     color: #2c7a7b;
 }
 
-/* Logo */
-.logo {
-    color: #335466;
-    font-size: 25px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
 /* SECCIÓN MÉDICOS */
-.medicos-group {
+.medicos-grid {
     padding: 60px 0;
     text-align: center;
+    
 }
 
-.medicos-group h2 {
+.medicos-grid h2 {
     font-size: 48px;
     color: #335466;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     margin-top: 80px;
     text-transform: uppercase;
 }
 
+/* --- ESTILOS PARA LAS NUEVAS TARJETAS GIRATORIAS DE MÉDICOS --- */
+
+/* Contenedor de la grilla */
 .medicos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     padding: 0 20px;
+    margin-top: 180px;
 }
 
-.medico {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.4s ease;
+/* Contenedor de perspectiva para el efecto 3D */
+.medico-card-container {
+    perspective: 1000px;
+    height: 450px; /* Altura fija para todas las tarjetas */
 }
 
-.medico:hover {
-    transform: translateY(-10px);
-}
-
-.medico img {
+/* La tarjeta que girará */
+.medico-card {
     width: 100%;
-    height: 300px;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    cursor: pointer;
+}
+
+/* Al pasar el ratón, la tarjeta gira */
+.medico-card-container:hover .medico-card {
+    transform: rotateY(180deg);
+}
+
+/* Estilo común para ambas caras de la tarjeta */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la cara trasera cuando no está visible */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Cara Frontal (la que se ve primero) --- */
+.card-front {
+    background-color: #fff;
+}
+
+.card-front img {
+    width: 100%;
+    height: 70%; /* La imagen ocupa la mayor parte de la tarjeta */
     object-fit: cover;
+    object-position: top;
 }
 
-.medico .info {
+.card-front .info {
     padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.medico h3 {
-    font-size: 20px;
+.card-front .info h3 {
+    font-size: 1.3rem;
     color: #333;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
-.medico .specialty {
-    font-size: 16px;
-    color: #1eb0b0;
+.card-front .info .specialty {
+    font-size: 1rem;
+    color: #1e88e5; /* Un azul vibrante */
+    margin-top: 5px;
+}
+
+/* --- Cara Trasera (la que aparece al girar) --- */
+.card-back {
+    background-color: #0d47a1; /* Un fondo azul oscuro elegante */
+    color: #fff;
+    transform: rotateY(180deg); /* Oculta y rota la cara trasera inicialmente */
+    padding: 30px;
+    justify-content: center;
+}
+
+.card-back h3 {
+    font-size: 1.5rem;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.medico .actions {
+.card-back h4 {
+    font-size: 1rem;
+    color: #bbdefb; /* Un azul claro para los subtítulos */
+    border-bottom: 1px solid #1e88e5;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.card-back p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.card-back .actions {
+    margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     gap: 10px;
 }
 
-.medico .action-btn {
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    color: #2c7a7b;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+.card-back .action-btn {
+    flex: 1;
+    padding: 12px;
+    background-color: #1e88e5;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.3s;
 }
 
-.medico .action-btn:hover {
-    background-color: #e0e0e0;
-}
-
-.medico .teleconsulta {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+.card-back .action-btn:hover {
+    background-color: #42a5f5;
 }
 
 /* Estilo del pie de página */

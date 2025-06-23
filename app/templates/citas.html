@@ -3,35 +3,117 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Agendar Citas | Novahealth</title>
+    <title>Agendar Cita | Novahealth</title>
     <link rel="stylesheet" href="../static/css/cita.css">
 </head>
 <body>
-<main class="container">
-    <h1>Reservar una Cita</h1>
-    <form id="citaForm" action="/submit_cita" method="POST" novalidate>
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required>
+    <header class="header">
+        <a href="/" class="logo">Novahealth</a>
+    </header>
 
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
+    <main>
+        <div class="page-section">
+            <div class="form-container">
+                <h1>Agendar una Cita</h1>
+                <p>Complete los datos del paciente y seleccione la especialidad para ver los médicos disponibles.</p>
+                
+                <!-- Contenedor para mensajes de error de JavaScript -->
+                <div id="form-errors" class="form-errors"></div>
+                
+                <!-- Mensajes Flash del servidor -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+        
+                <form id="citaForm" action="{{ url_for('citas.submit_cita') }}" method="POST" novalidate>
+                    <fieldset>
+                        <legend>Datos del Paciente</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre_paciente">Nombre del Paciente</label>
+                                <input type="text" id="nombre_paciente" name="nombre_paciente" required >
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido_paciente">Apellido del Paciente</label>
+                                <input type="text" id="apellido_paciente" name="apellido_paciente" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email_paciente">Correo Electrónico</label>
+                            <input type="email" id="email_paciente" name="email_paciente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono_paciente">Teléfono</label>
+                            <input type="text" id="telefono_paciente" name="telefono_paciente" maxlength="10" placeholder="09" required> 
+                        </div>
+                    </fieldset>
+        
+                    <fieldset>
+                        <legend>Detalles de la Cita</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="especialidad">1. Seleccione una Especialidad</label>
+                                <select id="especialidad" name="especialidad" required>
+                                    <option value="" disabled selected>-- Elige una opción --</option>
+                                    {% for esp in especialidades %}
+                                    <option value="{{ esp.id }}">{{ esp.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="medico">2. Seleccione un Médico</label>
+                                <select id="medico" name="medico" required disabled>
+                                    <option value="">-- Primero elija una especialidad --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">3. Seleccione Fecha y Hora</label>
+                            <input type="datetime-local" id="fecha" name="fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="motivo">Motivo de la Cita (Opcional)</label>
+                            <textarea id="motivo" name="motivo" rows="4"></textarea>
+                        </div>
+                    </fieldset>
+        
+                    <button type="submit" class="submit-btn">Confirmar Cita</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content container">
+            <p>©2025. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="/contacto">Contacto</a>
+                <a href="/terminos">Términos de Servicio</a>
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required>
+    <script src="..//static/js/citas.js"></script>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+            <script>
+            window.onload = function() {
+                {% for category, message in messages %}
+                {% if category == 'success' %}
+                    alert("{{ message }}");
+                {% endif %}
+                {% endfor %}
+            };
+            </script>
+      {% endif %}
+    {% endwith %}
 
-        <label for="especialidad">Especialidad:</label>
-        <select id="especialidad" name="especialidad" required>
-            <option value="">Seleccione una especialidad</option>
-        </select>
-
-        <label for="fecha">Fecha de la cita:</label>
-        <input type="date" id="fecha" name="fecha" required>
-
-        <button type="submit">Reservar cita</button>
-    </form>
-    <div id="especialidadHelp" class="message" aria-live="polite"></div>
-</main>
-
-<script src="../static/js/especialidad.js"></script>
 </body>
 </html>

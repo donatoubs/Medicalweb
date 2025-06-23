@@ -1,18 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5; /* Fondo gris claro */
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f9fb;
+  color: #333;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
 /* HEADER */
 .header {
     display: flex;
@@ -22,22 +36,25 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0 20px;
 }
 
-.navbar {
-    display: flex;
+/* Logo */
+.logo {
+    color: #335466;
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .navbar ul {
     display: flex;
+    align-items: center;
 }
 
 .navbar ul li a {
-    padding: 20px;
+    padding: 15px 20px;
     color: #18656c;
     font-weight: 600;
     font-size: 18px;
@@ -48,6 +65,7 @@ body {
     color: #359fa1;
 }
 
+/*Dropdown menu*/
 .navbar .dropdown {
     position: relative;
 }
@@ -58,7 +76,6 @@ body {
     top: 100%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     min-width: 200px;
 }
@@ -67,23 +84,146 @@ body {
     display: block;
 }
 
-.navbar .dropdown-menu li a {
-    padding: 10px 20px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 .navbar .dropdown-menu li a:hover {
     background-color: #f1f1f1;
     color: #2c7a7b;
 }
 
-/* Logo */
-.logo {
-    color: #335466;
-    font-size: 25px;
-    font-weight: 800;
-    text-transform: uppercase;
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a {
+  font-weight: 500;
+  padding: 10px;
+  color: #0c6b6b;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #1ab0b0;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  width: 250px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+  color: rgb(21, 25, 67);
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar a {
+  color: rgba(43, 88, 108, 0.534);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #1ab0b0;
+}
+
+/* Servicios */
+.services-detail {
+  padding: 80px 20px 60px;
+  max-width: 1100px;
+  margin-left: 300px; /* Para que el contenido no quede tapado por la barra lateral */
+}
+
+.services-detail h2 {
+  font-size: 36px;
+  color: #0c6b6b;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.service-item {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgb(45, 127, 131);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.service-item h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #124e66;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-item p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.service-item ul {
+  padding-left: 20px;
+}
+
+.service-item ul li {
+  font-size: 15px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.service-item ul li::before {
+  content: "✔";
+  position: absolute;
+  left: -18px;
+  color: #1ab0b0;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #0c6b6b;
+  color: #f9f9f9;
+  padding: 30px;
+  text-align: center;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+footer .footer-links a {
+  color: #f9f9f9;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+footer .footer-links a:hover {
+  color: #1ab0b0;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }

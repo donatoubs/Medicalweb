@@ -10,21 +10,12 @@
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo">Novahealth</a>
+        <a href="/" class="logo">Novahealth</a>
         <nav class="navbar">
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/equipo">Nuestros Médicos</a></li>
-                <li class="dropdown">
-                    <a href="/servicios" class="dpservicios-toggle">Servicios</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="emergencias.html">Emergencias</a></li>
-                        <li><a href="farmacia.html">Farmacia</a></li>
-                        <li><a href="banco_sangre.html">Banco de sangre</a></li>
-                        <li><a href="novalaser.html">Novalaser</a></li>
-                        <li><a href="convenios.html">Convenios</a></li>
-                    </ul>
-                </li>
+                <li><a href="/servicios">Servicios</a></li>
                 <li><a href="/contacto">Contacto</a></li>
                 {% if current_user.is_authenticated %}
                 <li><a href="/citas">Agenda tu cita</a></li>
@@ -34,54 +25,86 @@
                         <li><a href="/logout">Cerrar sesión</a></li>
                     </ul>
                 </li>
-
                 {% else %}
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login">Iniciar Sesion</a></li>
                 {% endif %}
 
             </ul>
         </nav>
-
     </header>
-    <section class="contacto-container">
-        <form action="" method="post" class="formulario">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombres Completos" required>
-            <input type="tel" id="celular" name="celular" placeholder="Celular" required> <input type="email"
-                placeholder="Email">
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            <textarea id="mensaje" name="mensaje" placeholder="Describe tu requerimiento" rows="5" required></textarea>
-            <button type="submit" id="enviar">Enviar</button>
-        </form>
-        <div class="contacto1">
-            <h3>Te contactaremos a la brevedad posible.</h3>
-            <h2>Será un placer atender tu requerimiento</h2>
-            <p>Estamos aquí para responder tus inquietudes y atender cualquier necesidad.</p>
+    <div class="contact-page-wrapper">
+        <div class="container">
+            <div class="contact-header">
+                <h1>Contáctanos</h1>
+                <p>Estamos listos para ayudarte. Completa el formulario o utiliza nuestros otros canales de contacto.
+                </p>
+            </div>
+
+            <div class="contact-content-grid">
+                <div class="contact-form-container">
+                    <form action="" method="post" class="contact-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Describe tu requerimiento</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-container">
+                    <div class="contact-info-text">
+                        <h3>Te contactaremos a la brevedad posible.</h3>
+                        <h2>Será un placer atender tu requerimiento.</h2>
+                        <p>Estamos aquí para responder tus inquietudes y atender cualquier necesidad.</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <h4>Horarios de Atención:</h4>
+                            <p>Lunes a Viernes: 7:00 AM - 7:00 PM</p>
+                            <p>Sábados: 8:00 AM - 12:00 PM</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Teléfono:</h4>
+                            <p>0999999999</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Escríbenos al:</h4>
+                            <p>contactenos@novahealth.com</p>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817297380117!2d-78.4893116852467!3d-0.1865919999469956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a6a3b2b2b2b%3A0x1b2b2b2b2b2b2b2b!2sAvenida%20de%20los%20Shyris%20%26%20Av.%20Abd%C3%B3n%20Calder%C3%B3n%2C%20Quito!5e0!3m2!1ses!2sec!4v1624482705121!5m2!1ses!2sec"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-    <div class="opciones-extra-container">
-            <h2>Te dejamos otras opciones de contacto</h2>
-            <div class="opciones-extra">
-                <h3>Comunicate al:</h3>
-                <p>0999999999</p>
-            </div>
-            <div class="opciones-extra">
-                <h3>Dirección Matriz Quito:</h3>
-                <p>Calle Abdón Calderón Muñoz 120 y Avenida de los Shyris</p>
-            </div>
-            <div class="opciones-extra">
-                <h3>Escríbenos al:</h3>
-                <p>contactenos@novahealth.com</p>
-            </div>
     </div>
     
     <footer>
         <div class="footer-content container">
             <p>©2025. Todos los derechos reservados.</p>
             <div class="footer-links">
-                <a href="contacto.html">Contacto</a>
-                <a href="terminos.html">Términos de Servicio</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/terminos">Términos de Servicio</a>
                 <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="https://x.com/" target="_blank">Twitter</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
             </div>
         </div>
     </footer>

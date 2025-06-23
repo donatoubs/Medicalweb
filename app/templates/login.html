@@ -1,55 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión | Novahealth</title>
-  <link rel="stylesheet" href="../static/css/login.css"> <!-- Ajusta la ruta según tu estructura -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | Novahealth</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body class="login-page">
-  <div class="login-container">
-    <h2 class="logo1">Novahealth</h2>
+    <div class="login-container">
+        <div class="login-left">
+            <h2 class="logo1">Novahealth</h2>
+            <p>Tu salud en buenas manos. <br>Inicia sesión o regístrate para comenzar.</p>
+        </div>
 
-    <!-- Formulario de Login -->
-    <form id="login-form" class="form1" method="POST">
-      {{ login_form.hidden_tag() }}
-      <label for="correo" class="custom-label">Identificación</label>
-      {{ login_form.correo(class="custom-input", placeholder="Ingresa tu correo") }}<br>
-      <label for="clave" class="custom-label">Contraseña</label>
-      {{ login_form.clave(class="custom-input", placeholder="Ingresa tu contraseña") }}<br>
-      <a href="#" class="forgot-password">Olvidé la contraseña</a>
-      {{ login_form.submit_login(class="custom-button") }}
-      <p class="register-link">¿Aún no tengo una cuenta? <a href="#" id="show-register">Registrarme</a></p>
-    </form>
+        <div class="login-right">
+            <!-- Mensajes Flash del servidor (para errores generales o éxito) -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
 
-    <!-- Formulario de Registro (oculto inicialmente) -->
-    <form id="register-form" class="form1" method="POST" style="display: none;">
-      {{ registro_form.hidden_tag() }}
-      <label for="nombre" class="custom-label">Apellidos y Nombres</label>
-      {{ registro_form.nombre(class="custom-input", placeholder="Ingresa tus Apellidos y Nombres") }}<br>
-      <label for="correo" class="custom-label">E-mail</label>
-      {{ registro_form.correo(class="custom-input", placeholder="Ingresa tu email") }}<br>
-      <label for="dni" class="custom-label">Número de Identificación</label>
-      {{ registro_form.dni(class="custom-input", placeholder="Ingresa tu identificación") }}<br>
-      <label for="clave" class="custom-label">Contraseña</label>
-      {{ registro_form.clave(class="custom-input", placeholder="Crea una contraseña") }}<br>
-      <label for="confirmar_clave" class="custom-label">Confirmar Contraseña</label>
-      {{ registro_form.confirmar_clave(class="custom-input", placeholder="Confirma tu contraseña") }}<br>
-      {{ registro_form.submit_register(class="custom-button", id="mm") }}
-      <p class="register-link">¿Ya tienes una cuenta? <a href="#" id="show-login">Iniciar Sesión</a></p>
-    </form>
+            <!-- Formulario de Login -->
+            <form id="login-form" class="form1 active" method="POST" action="{{ url_for('auth.login') }}" novalidate>
+                <h3>Iniciar Sesión</h3>
+                {{ login_form.hidden_tag() }}
+                <div class="form-group">
+                    {{ login_form.email.label(class="custom-label") }}
+                    {{ login_form.email(class="custom-input", placeholder="Ingresa tu correo") }}
+                </div>
+                <div class="form-group">
+                    {{ login_form.clave.label(class="custom-label") }}
+                    {{ login_form.clave(class="custom-input", placeholder="Ingresa tu contraseña") }}
+                </div>
+                {{ login_form.submit(class="custom-button") }}
+                <p class="register-link">¿Aún no tienes una cuenta? <a href="#" id="show-register">Registrarme</a></p>
+            </form>
 
-    <!-- Mensajes Flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <p class="flash-message" style="color: red;">{{ message }}</p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-  </div>
+            <!-- Formulario de Registro (oculto inicialmente) -->
+            <form id="register-form" class="form1" method="POST" action="{{ url_for('auth.register') }}" style="display: none;" novalidate>
+                <h3>Crear una Cuenta</h3>
+                {{ registro_form.hidden_tag() }}
+                
+                <div class="form-group">
+                    {{ registro_form.nombre.label(class="custom-label") }}
+                    {{ registro_form.nombre(class="custom-input") }}
+                    {% for error in registro_form.nombre.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ registro_form.apellido.label(class="custom-label") }}
+                    {{ registro_form.apellido(class="custom-input") }}
+                    {% for error in registro_form.apellido.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ registro_form.email.label(class="custom-label") }}
+                    {{ registro_form.email(class="custom-input") }}
+                    {% for error in registro_form.email.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ registro_form.dni.label(class="custom-label") }}
+                    {{ registro_form.dni(class="custom-input") }}
+                    {% for error in registro_form.dni.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ registro_form.clave.label(class="custom-label") }}
+                    {{ registro_form.clave(class="custom-input") }}
+                    {% for error in registro_form.clave.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ registro_form.confirmar_clave.label(class="custom-label") }}
+                    {{ registro_form.confirmar_clave(class="custom-input") }}
+                    {% for error in registro_form.confirmar_clave.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                {{ registro_form.submit(class="custom-button") }}
+                <p class="register-link">¿Ya tienes una cuenta? <a href="#" id="show-login">Iniciar Sesión</a></p>
+            </form>
+        </div>
+    </div>
 
-  <!-- Vinculación del archivo JavaScript -->
-  <script src="../static/js/login.js"></script> <!-- Ajusta la ruta según tu estructura -->
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 </body>
 </html>

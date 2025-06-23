@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Novahealth</title>
-    <link rel="stylesheet" href="../static/css/servicios.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | Novahealth</title>
+  <link rel="stylesheet" href="../static/css/servicios.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
-    <header class="header">
-        <a href="index.html" class="logo">Novahealth</a>
+  <header class="header">
+        <a href="/" class="logo">Novahealth</a>
         <nav class="navbar">
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/equipo">Nuestros Médicos</a></li>
-                <li class="dropdown">
-                    <a href="/servicios" class="dpservicios-toggle">Servicios</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="emergencias.html">Emergencias</a></li>
-                        <li><a href="farmacia.html">Farmacia</a></li>
-                        <li><a href="banco_sangre.html">Banco de sangre</a></li>
-                        <li><a href="novalaser.html">Novalaser</a></li>
-                        <li><a href="convenios.html">Convenios</a></li>
-                    </ul>
-                </li>
+                <li><a href="/servicios">Servicios</a></li>
                 <li><a href="/contacto">Contacto</a></li>
                 {% if current_user.is_authenticated %}
                 <li><a href="/citas">Agenda tu cita</a></li>
@@ -32,14 +26,83 @@
                         <li><a href="/logout">Cerrar sesión</a></li>
                     </ul>
                 </li>
-
                 {% else %}
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login">Iniciar Sesion</a></li>
                 {% endif %}
 
             </ul>
         </nav>
     </header>
 
+  <div class="sidebar">
+    <h3>Servicios</h3>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="mostrarServicio('emergencias')">Emergencias</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarServicio('farmacia')">Farmacia</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarServicio('banco-sangre')">Banco de Sangre</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarServicio('novalaser')">Novaláser</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section class="services-detail">
+      <h2>Conoce más sobre nuestros servicios</h2>
+
+      <div id="emergencias" class="service-item">
+        <h3><i class="fas fa-ambulance"></i> Emergencias 24/7</h3>
+        <p>Atención inmediata con profesionales especializados, disponible las 24 horas del día, los 7 días de la semana.</p>
+        <ul>
+          <li>Área de triaje y estabilización inmediata</li>
+          <li>Equipos de monitoreo y soporte vital</li>
+          <li>Ambulancia equipada y respuesta rápida</li>
+        </ul>
+      </div>
+
+      <div id="farmacia" class="service-item" style="display: none;">
+        <h3><i class="fas fa-capsules"></i> Farmacia Hospitalaria</h3>
+        <p>Medicamentos confiables dentro del mismo recinto hospitalario, con personal farmacéutico profesional.</p>
+        <ul>
+          <li>Medicamentos genéricos y de marca</li>
+          <li>Atención personalizada y orientación médica</li>
+          <li>Disponibilidad de fórmulas médicas post consulta</li>
+        </ul>
+      </div>
+
+      <div id="banco-sangre" class="service-item" style="display: none;">
+        <h3><i class="fas fa-tint"></i> Banco de Sangre</h3>
+        <p>Recolección y procesamiento de componentes sanguíneos con estándares internacionales de bioseguridad.</p>
+        <ul>
+          <li>Donación voluntaria y programada</li>
+          <li>Componentes: glóbulos rojos, plaquetas, plasma</li>
+          <li>Soporte para cirugías y terapias intensivas</li>
+        </ul>
+      </div>
+
+      <div id="novalaser" class="service-item" style="display: none;">
+        <h3><i class="fas fa-laser"></i> Novaláser</h3>
+        <p>Tecnología láser de última generación para tratamientos estéticos y dermatológicos no invasivos.</p>
+        <ul>
+          <li>Rejuvenecimiento facial</li>
+          <li>Eliminación de manchas, acné, cicatrices</li>
+          <li>Depilación láser médica segura</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+        <div class="footer-content container">
+            <p>©2025. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="/contacto">Contacto</a>
+                <a href="/terminos">Términos de Servicio</a>
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="../static/js/servicios.js"></script>
 </body>
+
 </html>

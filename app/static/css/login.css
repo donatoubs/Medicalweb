@@ -1,64 +1,189 @@
-/* Estilos generales */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
+/* Estilo general */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
+    background: #f4f4f9;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
-/* Estilo del contenedor principal */
-h2 {
-    color: #333;
+/* Contenedor principal (pantalla completa) */
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sección izquierda: Nombre de la clínica y mensaje */
+.login-left {
+    flex: 1;
+    background-color: #335466;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
     text-align: center;
 }
 
-/* Estilo de los formularios */
-form {
+/* Logo de la clínica */
+.login-left .logo1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Mensaje de bienvenida */
+.login-left p {
+    font-size: 1.5rem;
+    color: #b4b1b1;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+/* Sección derecha: Formulario de login */
+.login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 400px;
+    padding: 40px;
+    box-shadow: -4px 0px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
-/* Estilo de las etiquetas y campos de entrada */
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+/* Formulario */
+.form-container {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    max-width: 450px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estilo del botón de envío */
-input[type="submit"] {
+/* Título del formulario */
+.form-container h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Estilos de los campos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.custom-button {
+    width: 100%;
+    padding: 14px;
     background-color: #18656c;
     color: white;
-    padding: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    width: 100%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
-    background-color: #359fa1;
+.custom-button:hover {
+    background-color: #2c7a7b;
 }
 
-/* Estilo de los mensajes de error */
-p {
+/* Enlaces para cambiar entre login y registro */
+.register-link,
+.login-link {
+    font-size: 1rem;
     text-align: center;
-    font-size: 14px;
+    margin-top: 15px;
 }
+
+.register-link a,
+.login-link a {
+    color: #18656c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover,
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de error/éxito sobre el formulario */
+.form-errors, .alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 450px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Estilo para los errores inline (si aún los usas) */
+.error-message {
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* --- DISEÑO RESPONSIVO --- */
+@media (max-width: 992px) {
+    .login-container {
+        flex-direction: column; /* Apila las columnas */
+        height: auto;
+    }
+
+    /* Sección izquierda */
+    .login-left {
+        flex-basis: auto; /* El tamaño se adapta al contenido */
+        min-height: 250px; /* Altura mínima para la bienvenida */
+        padding: 30px;
+    }
+
+    .login-left .logo1 {
+        font-size: 2.5rem;
+    }
+
+    .login-left p {
+        font-size: 1rem;
+    }
+
+    /* Sección derecha (formulario) */
+    .login-right {
+        padding: 30px;
+    }
+
+    /* Formulario */
+    .form-container {
+        max-width: 100%;
+    }
+}
+

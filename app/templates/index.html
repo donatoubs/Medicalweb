@@ -17,21 +17,12 @@
     </div>
 
     <header class="header">
-        <a href="index.html" class="logo">Novahealth</a>
+        <a href="/" class="logo">Novahealth</a>
         <nav class="navbar">
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/equipo">Nuestros Médicos</a></li>
-                <li class="dropdown">
-                    <a href="/servicios" class="dpservicios-toggle">Servicios</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="emergencias.html">Emergencias</a></li>
-                        <li><a href="farmacia.html">Farmacia</a></li>
-                        <li><a href="banco_sangre.html">Banco de sangre</a></li>
-                        <li><a href="novalaser.html">Novalaser</a></li>
-                        <li><a href="convenios.html">Convenios</a></li>
-                    </ul>
-                </li>
+                <li><a href="/servicios">Servicios</a></li>
                 <li><a href="/contacto">Contacto</a></li>
                 {% if current_user.is_authenticated %}
                 <li><a href="/citas">Agenda tu cita</a></li>
@@ -41,21 +32,19 @@
                         <li><a href="/logout">Cerrar sesión</a></li>
                     </ul>
                 </li>
-
                 {% else %}
-                <li><a href="/login">Login</a></li>
+                <li><a href="/login">Iniciar Sesion</a></li>
                 {% endif %}
 
             </ul>
         </nav>
-
     </header>
 
     <section class="inicio" id="inicio">
         <div>
             <h1>Apreciamos el valor <br> de tu vida</h1>
             <p>Salud y confianza en cada consulta</p>
-            <a href="citas.html" class="btn-1">Agenda Cita</a>
+            <a href="/citas" class="btn-1">Agenda Cita</a>
         </div>
     </section>
 
@@ -63,7 +52,6 @@
         <div class="clinica-content container">
             <h2>¿Por qué elegir nuestros <br> Centros Médicos?</h2>
             <p class="text1">Atención integral, tecnología avanzada y un equipo comprometido con tu bienestar.</p>
-            <img src="css/imagenes/simbolomed.png" alt="Símbolo médico" id="simbolo">
         </div>
 
         <div class="medicos-group container">
@@ -73,10 +61,8 @@
                     <img src="../static/imagenes/doctora1.avif" alt="Dra. Sofia Almeida">
                     <div class="info">
                         <h3>Sofia Valentina Almeida Robalino</h3>
-                        <p class="specialty">Medicina Interna</p>
+                        <p class="specialty">Dermatologia</p>
                         <div class="actions">
-                            <a href="perfil_sofia.html" class="action-btn">Ver perfil</a>
-                            <a href="tel:+123456789" class="action-btn">Llamar</a>
                             <div class="teleconsulta">
                                 <input type="checkbox" id="teleconsulta1">
                                 <label for="teleconsulta1">Teleconsulta</label>
@@ -85,13 +71,11 @@
                     </div>
                 </div>
                 <div class="medico">
-                    <img src="../static/imagenes/doctora1.avif" alt="Dra. Maria Emilia Andrade Lopez, Neonatología">
+                    <img src="../static/imagenes/doctora2.jpg" alt="Dra. Maria Emilia">
                     <div class="info">
-                        <h3>Ana Cristina Perez Koller</h3>
-                        <p class="specialty">Neonatología</p>
+                        <h3>Ana Sofia Torres Perez</h3>
+                        <p class="specialty">Ginecología</p>
                         <div class="actions">
-                            <a href="perfil_maria.html" class="action-btn">Ver perfil</a>
-                            <a href="tel:+123456789" class="action-btn">Llamar</a>
                             <div class="teleconsulta">
                                 <input type="checkbox" id="teleconsulta2" disabled>
                                 <label for="teleconsulta2">Teleconsulta</label>
@@ -100,14 +84,11 @@
                     </div>
                 </div>
                 <div class="medico">
-                    <img src="../static/imagenes/doctora1.avif"
-                        alt="Dr. Marco Antonio Paredes Nieto, Neurología Pediátrica">
+                    <img src="../static/imagenes/doctor3.avif" alt="Dr. Carlos Mendoza">
                     <div class="info">
-                        <h3>Marco Antonio Paredes Nieto</h3>
-                        <p class="specialty">Neurología Pediátrica</p>
+                        <h3>Juan Carlos Mendoza Garcia</h3>
+                        <p class="specialty">Pediatra</p>
                         <div class="actions">
-                            <a href="perfil_marco.html" class="action-btn">Ver perfil</a>
-                            <a href="tel:+123456789" class="action-btn">Llamar</a>
                             <div class="teleconsulta">
                                 <input type="checkbox" id="teleconsulta3">
                                 <label for="teleconsulta3">Teleconsulta</label>
@@ -116,13 +97,11 @@
                     </div>
                 </div>
                 <div class="medico">
-                    <img src="../static/imagenes/doctora1.avif" alt="Dr. Juan Pérez, Oftalmólogo">
+                    <img src="../static/imagenes/doctora6.jpg" alt="Dr. Ashley Garcia">
                     <div class="info">
-                        <h3>Anthony Stephen Fauci</h3>
-                        <p class="specialty">Oftalmólogo</p>
+                        <h3>Ashley Garcia Lopez</h3>
+                        <p class="specialty">Medicina General</p>
                         <div class="actions">
-                            <a href="perfil_juan.html" class="action-btn">Ver perfil</a>
-                            <a href="tel:+123456789" class="action-btn">Llamar</a>
                             <div class="teleconsulta">
                                 <input type="checkbox" id="teleconsulta7">
                                 <label for="teleconsulta7">Teleconsulta</label>
@@ -131,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <a class="btn-2" href="equipo.html">
+            <a class="btn-2" href="/equipo">
                 << MAS>>
             </a>
         </div>
@@ -139,74 +118,90 @@
         <div class="servicios-group">
             <p>Conoce nuestros</p>
             <h3>Servicios Destacados</h3>
-            <div class="servicio">
-                <img src="imagenes/emergency.avif" alt="Servicio de atención médica 24/7">
-                <h3>Atención 24/7</h3>
-                <p>Siempre disponibles para tu salud.</p>
-            </div>
-            <div class="servicio">
-                <img src="imagenes/tecnologia.jpg" alt="Tecnología avanzada en atención médica">
-                <h3>Tecnología Avanzada</h3>
-                <p>Equipos de última generación.</p>
-            </div>
-            <div class="servicio">
-                <img src="imagenes/especialistas.jpg" alt="Equipo de especialistas médicos">
-                <h3>Especialistas</h3>
-                <p>Profesionales altamente calificados.</p>
+
+            <div class="container-servicios">
+                <div class="servicio">
+                    <img src="../static/imagenes/emergency.avif" alt="Servicio de atención médica 24/7">
+                    <h3>Atención 24/7</h3>
+                    <p>Siempre disponibles para tu salud.</p>
+                </div>
+                <div class="servicio">
+                    <img src="../static/imagenes/tecnologia.jpg" alt="Tecnología avanzada en atención médica">
+                    <h3>Tecnología Avanzada</h3>
+                    <p>Equipos de última generación.</p>
+                </div>
+                <div class="servicio">
+                    <img src="../static/imagenes/especialistas.jpg" alt="Equipo de especialistas médicos">
+                    <h3>Especialistas</h3>
+                    <p>Profesionales altamente calificados.</p>
+                </div>
             </div>
         </div>
 
         <div class="instalaciones">
-            <p>Nuestras</p>
-            <h3>Instalaciones</h3>
-            <img src="imagenes/instalacion1.jpg" alt="Instalación médica 1 de Novahealth">
-            <img src="imagenes/instalacion2.jpg" alt="Instalación médica 2 de Novahealth">
-            <img src="imagenes/instalacion3.jpg" alt="Instalación médica 3 de Novahealth">
-            <img src="imagenes/instalacion4.webp" alt="Instalación médica 4 de Novahealth">
-            <img src="imagenes/instalacion5.webp" alt="Instalación médica 5 de Novahealth">
+            <div class="texto">
+                <p>Nuestras</p>
+                <h3>Instalaciones</h3>
+            </div>
+            <div class="imagenes">
+                <img src="../static/imagenes/instalacion1.jpg" alt="Instalación médica 1 de Novahealth">
+                <img src="../static/imagenes/instalacion2.jpg" alt="Instalación médica 2 de Novahealth">
+                <img src="../static/imagenes/instalacion3.jpg" alt="Instalación médica 3 de Novahealth">
+                <img src="../static/imagenes/instalacion4.webp" alt="Instalación médica 4 de Novahealth">
+                <img src="../static/imagenes/instalacion5.webp" alt="Instalación médica 5 de Novahealth">
+            </div>
         </div>
 
-        <div id="convenios">
+
+        <div class="convenios">
             <h3>Partners</h3>
-            <img src="imagenes/convenio1.png" alt="Convenio con partner de Novahealth">
+            <img src="../static/imagenes/convenio1.png" alt="Convenio con partner de Novahealth">
         </div>
     </main>
 
     <section class="testimonios">
         <h2>TESTIMONIOS</h2>
-        <div class="testimonial">
-            <p>"Excelente atención, muy profesionales."</p>
-            <span>- Ana G.</span>
-        </div>
-        <div class="testimonial">
-            <p>"El servicio fue excepcional y el personal muy amable."</p>
-            <span>- David P.</span>
-        </div>
-        <div class="testimonial">
-            <p>"Recomiendo esta clínica a todos mis amigos."</p>
-            <span>- Rafael V.</span>
-        </div>
-        <div class="testimonial">
-            <p>"La atención fue rápida y efectiva."</p>
-            <span>- Daniela B.</span>
-        </div>
-        <div class="testimonial">
-            <p>"Un lugar confiable para cuidar de mi salud."</p>
-            <span>- Anthony O.</span>
-        </div>
+        <div class="testimonios-grid">
+
+            <div class="testimonial-alt">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">AG</div>
+                    <span class="testimonial-author">- Ana G.</span>
+                </div>
+                <p class="testimonial-texto">"Excelente atención, muy profesionales y un ambiente muy acogedor. Totalmente recomendados."</p>
+            </div>
+
+            <div class="testimonial-alt">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">DP</div>
+                    <span class="testimonial-author">- David P.</span>
+                </div>
+                <p class="testimonial-texto">"El servicio fue excepcional desde el momento en que entré. El personal es increíblemente amable."</p>
+            </div>
+
+            <div class="testimonial-alt">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">RV</div>
+                    <span class="testimonial-author">- Rafael V.</span>
+                </div>
+                <p class="testimonial-texto">"Recomiendo esta clínica a todos mis amigos y familiares. Un lugar confiable para cuidar de mi salud."</p>
+            </div>
+            
+            </div>
     </section>
 
     <footer>
         <div class="footer-content container">
             <p>©2025. Todos los derechos reservados.</p>
             <div class="footer-links">
-                <a href="contacto.html">Contacto</a>
-                <a href="terminos.html">Términos de Servicio</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/terminos">Términos de Servicio</a>
                 <a href="https://facebook.com" target="_blank">Facebook</a>
                 <a href="https://twitter.com" target="_blank">Twitter</a>
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>
